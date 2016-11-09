@@ -18,14 +18,31 @@ public class Test {
                 {0, 0, 0, 4, 5, 0, 0}
         };
 
-        /*System.out.println("Enter the number of nodes : ");
+        /*int[][] weight;
+
+        System.out.println("Enter the number of nodes : ");
         int node_num = scan.nextInt();
-        weight = new int[node_num][node_num];*/
+        weight = new int[node_num][node_num];
 
-        /*System.out.println("Enter the cost matrix : \n(ex>0,7,0,0)");
-        String cost = scan.nextLine();
-        cost.split(",");*/
+        scan.nextLine();
 
+        int index = 0;
+        while(index != node_num){
+            if(index == 0)
+                System.out.println("Enter the cost matrix : \n(ex>0,7,0,0)");
+            String cost = scan.nextLine();
+            String[] split = cost.split(",");
+            if(split.length > node_num) {
+                System.out.print("Node count differs from the input value.");
+                System.exit(0);
+            }
+            else{
+                for(int i=0 ; i<node_num ; i++)
+                    weight[index][i] = Integer.parseInt(split[i]);
+                index++;
+            }
+        }
+*/
         System.out.println("Enter the source matrix :");
         int start = scan.nextInt();
 

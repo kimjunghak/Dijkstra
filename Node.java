@@ -1,26 +1,15 @@
 /**
- * Created by kjh on 16. 11. 9.
+ * Created by KJH on 2016-11-09.
  */
 public class Node{
-    int num;
-    String name;
+    int index;
+    int distance;
+    int prev_index;
 
-    public Node(){
-    }
-
-    public Node(int num, String name){
-        this.num = num;
-        this.name = name;
-    }
-
-
-    public void setNode(int num, String name){
-        this.num = num;
-        this.name = name;
-    }
-
-    public void setNode(int n){
-        this.num = n;
+    public Node(int i, int d, int p){
+        this.index = i;
+        this.distance = d;
+        this.prev_index = p;
     }
 
 }

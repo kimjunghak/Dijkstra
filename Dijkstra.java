@@ -1,4 +1,3 @@
-
 /**
  * Created by kjh on 16. 11. 9.
  */
@@ -7,15 +6,46 @@ public class Dijkstra {
     private final int INF = Integer.MAX_VALUE;
     int[] distance;
     boolean[] visit;
+    PriorityQueue priorityQueue;
+
 
     public Dijkstra(int[][] weight, int start){
-        distance = new int[weight.length];
-        visit = new boolean[weight.length];
+        int len = weight.length;
+        visit = new boolean[len];
+        distance = new int[len];
+        priorityQueue = new PriorityQueue();
 
         weight = init(weight, start);
 
-        shortest_path(weight, start);
+        shortest_path_heap(weight);
+
         print(start);
+    }
+
+
+
+    private void print(int start) {
+        for(int i=0 ; i<distance.length ; i++){
+            if(i != start)
+                System.out.println(start + "->" + i + ", cost = " + distance[i]);
+        }
+    }
+
+    private void shortest_path_heap(int[][] weight){
+        int len = weight.length;
+
+        while(!priorityQueue.isEmpty()){
+
+            Node start = priorityQueue.extract_min();
+            visit[start.index] = true;
+
+            for(int i=0 ; i<len ; i++){
+                if(weight[start.index][i] != INF && visit[i] == false){
+                    distance[i] = Math.min(distance[i], distance[start.index] + weight[start.index][i]);
+                    priorityQueue.setNode(i, distance[i], start.index);
+                }
+            }
+        }
     }
 
     private int[][] init(int[][] weight, int start) {
@@ -27,21 +57,8 @@ public class Dijkstra {
             if(i != start)
                 distance[i] = INF;
             visit[i] = false;
+            priorityQueue.init(distance, i);
         }
         return weight;
-    }
-
-    private void print(int start) {
-        for(int i=0 ; i<distance.length ; i++){
-            if(i != start)
-                System.out.println(start + "->" + i + ", cost = " + distance[i] + "\n");
-        }
-    }
-
-    private void shortest_path(int[][] weight, int start){
-        int len = weight.length;
-
-        for(int i=0 ; i<len ; i++){
-        }
     }
 }
