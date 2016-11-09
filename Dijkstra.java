@@ -18,11 +18,8 @@ public class Dijkstra {
         weight = init(weight, start);
 
         shortest_path_heap(weight);
-
         print(start);
     }
-
-
 
     private void print(int start) {
         for(int i=0 ; i<distance.length ; i++){
@@ -33,12 +30,9 @@ public class Dijkstra {
 
     private void shortest_path_heap(int[][] weight){
         int len = weight.length;
-
         while(!priorityQueue.isEmpty()){
-
             Node start = priorityQueue.extract_min();
             visit[start.index] = true;
-
             for(int i=0 ; i<len ; i++){
                 if(weight[start.index][i] != INF && visit[i] == false){
                     distance[i] = Math.min(distance[i], distance[start.index] + weight[start.index][i]);

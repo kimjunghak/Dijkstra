@@ -8,10 +8,6 @@ public class PriorityQueue {
 
     ArrayList<Node> arrayList = new ArrayList<>();
 
-    /*public PriorityQueue(){
-        build_min_heap();
-    }*/
-
     public void init(int[] distance, int index){
         arrayList.add(new Node(index, distance[index], -1));
         build_min_heap();
